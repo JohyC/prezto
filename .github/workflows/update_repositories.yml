@@ -41,10 +41,12 @@ jobs:
         run: |
           df -hT $PWD
           git clone $REPO_URL prezto --recurse-submodules
+          ln -sf /workdir/prezto $GITHUB_WORKSPACE/prezto
       - name: commit
         id: commit
         run: |
-          cd prezto
+          ls -lah && echo $PWD 
+          cd $GITHUB_WORKSPACE/prezto
           git config --global user.email c13340908272@outlook.com
           git config --global user.name action_bot
           git add .
